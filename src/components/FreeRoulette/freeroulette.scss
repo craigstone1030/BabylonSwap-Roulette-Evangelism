@@ -1,0 +1,57 @@
+.freeroulette-main {
+    padding-left: 150px;
+    .leftContainer {
+        background: #ffeeee;
+        border-radius: 20px;
+        padding: 40px 55px;
+    }
+}
+.anikatemd{
+    position: relative;
+    width: 240px;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 18px;
+}
+.upper_sss{
+    position: absolute;
+    top: 0px;
+    left: 44%;
+    text-align: center;
+    // transform: (-50%, 50%);
+}
+.aniatess{
+    .animajsjsjs{
+        animation-name: rotate;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        width: 240px;
+        height: 240px;
+    }
+}
+.anikatemd{
+    cursor: pointer;
+   &:hover{
+    .animajsjsjs{
+        animation-duration: 4s;
+    }
+   } 
+}
+
+@keyframes rotate{
+    from{ transform: rotate(-360deg); }
+    to{ transform: rotate(360deg); }
+}
+
+
+@media (max-width: 600px) {
+    .freeroulette-main .leftContainer {
+        background: #ffeeee;
+        border-radius: 20px;
+        padding: 30px 30px;
+        margin: 0px 15px;
+    }
+}

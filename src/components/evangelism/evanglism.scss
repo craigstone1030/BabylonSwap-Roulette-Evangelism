@@ -1,0 +1,20 @@
+.evanglism-main{
+   
+    // min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     .customList{
+         li{
+             margin-top: 10px;
+             color: #8c8888;
+         }
+     }
+}
+.inputErrors{
+    color:  #D73D3D !important;
+    padding: 2px;
+    font-size: 18px;
+    padding-left: 14px;
+    // padding-left: 32px;
+   }
