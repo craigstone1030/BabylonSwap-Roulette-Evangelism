@@ -92,20 +92,20 @@ const claimAll = () => {
 
 const getTokenItemHtml = (item, number) => {
     return (
-        <div className="col-12 text-center" key={number}>
-            <ul className="list-inline">
-                <li className="list-inline-item">
-                    <input type="text" onChange={handleAmountChange} />
-                </li>
-                <li className="list-inline-item">
-                    { item.tokenName }
-                </li>
-                <li className="list-inline-item  ml-3">
+        <div className="col-12" key={number}>
+            <div className="row align-items-center justify-content-center">
+                <div className="col-6">
+                    <input type="text" class="address-input" onChange={handleAmountChange} />
+                </div>
+                <div className="col-2">
+                  100  { item.tokenName }
+                </div>
+                <div className="col-2">
                     <button type='button' onClick={()=>sendToken(item)} className='btn-common'>
                         Claim
                     </button>                    
-                </li>
-            </ul>            
+                </div>                
+            </div>            
         </div>
     )
 }
@@ -115,16 +115,18 @@ return (
         {/* <Navbar /> */}
         <div className="converter-main">
             <div className="container text-center">
-                <div className="row pt-5">
+                <div className="row pt-2">
                     {
                         tokens.map((item, key) => {
                             return getTokenItemHtml(item, key)
                         })
                     }
                 </div>
-                <button type='button' onClick={()=>claimAll()} className='btn-common'>
-                    Claim All
-                </button>  
+                <div class="col-12 text-center">
+                    <button type='button' onClick={()=>claimAll()} className='btn-common'>
+                        Claim All
+                    </button>  
+                </div>
             </div>           
         </div>        
     </>
