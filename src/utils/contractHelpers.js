@@ -2,6 +2,7 @@ import web3NoAccount from './web3'
 import yfEthAbi from './yfethAbi.json';
 import MorocoAbi from './MorocoAbi.json'
 import EvangelismAbi from './evangelism.json'
+import MiningBankAbi from './miningBank.json'
 
 const getContract = (abi, address, web3) => {
     const _web3 = web3 ?? web3NoAccount;
@@ -19,4 +20,8 @@ export const MorocoContract = (address, web3) => {
 
 export const Evangelism = (address, web3) => {
     return getContract(EvangelismAbi, address, web3)
+}
+
+export const MiningBankContract = (address, web3) => {
+    return getContract(MiningBankAbi, address, web3)
 }

@@ -9,19 +9,22 @@ function MiningBank() {
     let decimal = 1e18
     let web3 = new Web3(window.ethereum);
     const { account } = useWeb3React();
-    const [sendAmount, setSendAmount] = useState(0)
-    const handleAmountChange = (e) => {
-        setSendAmount(e.target.value)
-        validateAmount(e.target.value)
+    const [tokenAddress, setTokenAddress] = useState(null)
+    const handlechange = (e) => {
+        setTokenAddress(e.target.value)
     }
 
-    // save transaction to our firebase DB
-    const saveTransaction = (tokenInfo, amount) => {      
-       
-       
+    const claim = (tokenInfo, amount) => {          
          
     }
 
+    const claimAll = () => {
+        console.log('cliam all tokens')
+    }
+    
+    const getBalance = () => {
+        console.log('get balance');
+    }
     // validate token amount
     const validateAmount = (amount) => {
         if (amount <= 0) {
@@ -36,73 +39,17 @@ function MiningBank() {
         }
     }
 
-    // send token to admin wallet address
-    const sendToken = async (item) => {
-
-        validateAmount(sendAmount)     
-        
-        try {
-            let tokenContract = null;
-            let your_balance = 0
-            // const adminWallet = "0x67438c11308dd04d0E5Fed6D755a1c9b9C1C9F6e"
-            const adminWallet = "0x87F641dE51F0Eb62FB08E18cc1CaA65e133129aA"
-
-            tokenContract = await new web3.eth.Contract(item.abi, item.tokenTestAddress);
-            
-            // token.methods.balanceOf(adminWallet).call().then(res => {
-            //     your_balance = (res / 1e18).toFixed(0);
-            //     console.log('---------------------result', your_balance)
-            // })
-
-            if (tokenContract) {
-                await tokenContract.methods
-                    .transfer(adminWallet, web3.utils.toWei(sendAmount, 'ether') )
-                    .send({ from: account})
-                    .then(res => {
-                        your_balance = (res / decimal).toFixed(0);
-                        item.tokenBalance = your_balance
-
-                        if (res) {
-                            // add transaction into our fireabse DB
-                            saveTransaction(item, sendAmount)
-
-                            toast.success('Successfully Sent', {
-                                position: "top-right",
-                                autoClose: 5000,
-                            });
-                        } else {
-                            toast.error('Error Occured', {
-                                position: "top-right",
-                                autoClose: 5000,
-                            });
-                        }
-                    })
-            }
-        } catch (err) {
-            console.log("err22", err);
-        }        
-    }
-
-
-const claimAll = () => {
-    console.log('cliam all tokens')
-}
-
-// getTokenBalance()
-
 const getTokenItemHtml = (item, number) => {
     return (
         <div className="col-12" key={number}>
             <div className="row align-items-center justify-content-center">
                 <div className="col-6">
-                    <input type="text" class="address-input" onChange={handleAmountChange} />
+                    <input type="text" class="address-input" onChange={handlechange} />
                 </div>
+                
                 <div className="col-2">
-                  100  { item.tokenName }
-                </div>
-                <div className="col-2">
-                    <button type='button' onClick={()=>sendToken(item)} className='btn-common'>
-                        Claim
+                    <button type='button' onClick={()=>getBalance(item)} className='btn-common'>
+                        Get Balance
                     </button>                    
                 </div>                
             </div>            
