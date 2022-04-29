@@ -37,7 +37,7 @@ function FreeRoulette({active}) {
         }
     });
 
-     const doClaim = useCallback(async () => {
+    const doClaim = useCallback(async () => {
         try {
             const tx = await Claiming();
             if (tx.status) {

@@ -11,8 +11,9 @@ export const setupNetwork = async () => {
   console.log("we have here setupnetwork")
   const provider = (window).ethereum
   if (provider) {
-    // const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
-    const chainId = 56
+    const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
+    console.log('chainID', chainId)
+    // const chainId = 56
     try {
       await provider.request({
         method: 'wallet_addEthereumChain',
