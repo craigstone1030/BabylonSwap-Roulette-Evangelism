@@ -1,6 +1,6 @@
 import web3NoAccount from './web3'
 import yfEthAbi from './yfethAbi.json';
-import MorocoAbi from './MorocoAbi.json'
+import RouletteAbi from './roulette.json'
 import EvangelismAbi from './evangelism.json'
 import MiningBankAbi from './miningBank.json'
 
@@ -14,8 +14,8 @@ export const getBep20Contract = (address, web3) => {
     return getContract(yfEthAbi, address, web3)
 }
 
-export const MorocoContract = (address, web3) => {
-    return getContract(MorocoAbi, address, web3)
+export const RouletteContract = (address, web3) => {
+    return getContract(RouletteAbi, address, web3)
 }
 
 export const Evangelism = (address, web3) => {

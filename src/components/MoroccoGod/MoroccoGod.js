@@ -19,9 +19,9 @@ function MoroccoGod({ active }) {
                                 <img src="/hash-max-assets/header/logo.svg" className="img-fluid logo_img logo_img2" alt="" />
                                 </a>
                                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <div class="style-bar"></div>
-                                    <div class="style-bar"></div>
-                                    <div class="style-bar"></div>
+                                    <div className="style-bar"></div>
+                                    <div className="style-bar"></div>
+                                    <div className="style-bar"></div>
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav mx-auto">

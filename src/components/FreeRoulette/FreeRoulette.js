@@ -4,16 +4,19 @@ import './freeroulette.scss'
 import {
     Spinner,
     UserInfo,
-    Claim
-} from '../../hooks/Morocofetcher';
+    Claim,
+    AddNewRound
+} from '../../hooks/RouletteFetcher';
 
 function FreeRoulette({active}) {
     const [txstatus, setTxstatus] = useState(false);
 
     const { Spinnerinner } = Spinner();
-    const { Claiming } = Claim();
+    const { handleClaim } = Claim();
+    const { handleAddingNewRound } = AddNewRound();
     const history = UserInfo();
-    console.log("history we get here is", history?.totalParticipatedRound)
+    const [rewardAmount, setRewardAmount] = useState(0);
+    
     const Spinroult = useCallback(async () => {
         try {
             // setShowLoader(true)
@@ -37,9 +40,22 @@ function FreeRoulette({active}) {
         }
     });
 
-    const doClaim = useCallback(async () => {
+    const doClaim = useCallback(async () => { 
         try {
-            const tx = await Claiming();
+            const tx = await handleClaim();
+            if (tx.status) {
+                await setTxstatus(tx.status);               
+            }
+        } catch (err) {            
+            console.log("err22", err);
+        }
+    });
+
+    const doAddNewRound = useCallback(async () => {
+        try { 
+            setRewardAmount(10000);
+            console.log('setRewardAmount', rewardAmount)
+            const tx = await handleAddingNewRound(rewardAmount);
             if (tx.status) {
                 await setTxstatus(tx.status);               
             }
@@ -57,11 +73,11 @@ function FreeRoulette({active}) {
                             <div className="row ptb">
                                 <div className="col-lg-5">
                                     <div className="leftContainer aniatess text-center">
+                                        <h2>Free Roulette</h2>
                                         <div className='anikatemd'>
                                             <img src="hash-max-assets/freeroulette/roulette.png" className='img-fluid animajsjsjs' alt="" />
                                             <img src="hash-max-assets/freeroulette/arrow.png" className='img-fluid upper_sss' alt="" />
                                         </div>
-                                        <h2>Free Roulette</h2>
                                         {/* <p className='py-3'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p> */}
                                         <ul className="list-inline mt-5">
                                             <li className="list-inline-item">
@@ -70,14 +86,17 @@ function FreeRoulette({active}) {
                                             <li className="list-inline-item">
                                                 <button className='btn-common' onClick={doClaim}>Claim</button>
                                             </li>
+                                            <li className="list-inline-item">
+                                                <button className='btn-common' onClick={doAddNewRound}>Add New Round</button>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div className="col-lg-7  pt-lg-0 pt-5 my-auto">
                                     <div className="leftContainer common commonpsize">
                                         <h5 className='mb-3 font-weight-bold'>HISTORY</h5>
-                                        <div class="table-responsive">
-                                            <table class="table">
+                                        <div className="table-responsive">
+                                            <table className="table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Total Participated</th>
@@ -90,46 +109,7 @@ function FreeRoulette({active}) {
                                                         <th scope="row">{history?.totalParticipatedRound}</th>
                                                         <td>{history?.lastRound}</td>
                                                         <td className='text-success'>{history?.lastIndex}</td>
-
-                                                    </tr>
-                                                    {/* <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>-</td>
-                                                        <td>LOSS</td>    
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>-</td>
-                                                        <td>lOSS</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>0.2 BNB</td>
-                                                        <td className='text-success'>WIN</td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>-</td>
-                                                        <td>LOSS</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>-</td>
-                                                        <td>lOSS</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>0.2 BNB</td>
-                                                        <td className='text-success'>WIN</td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">25 Feb, 2022</th>
-                                                        <td>0.2 BNB</td>
-                                                        <td className='text-success'>WIN</td>
-
-                                                    </tr> */}
+                                                    </tr>                                                    
                                                 </tbody>
                                             </table>
                                         </div>

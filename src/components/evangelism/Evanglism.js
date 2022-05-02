@@ -143,22 +143,22 @@ function Evanglism({ active }) {
 
 
             {/* //modal */}
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title text-center w-100" id="exampleModalLabel">Address of Sponser</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h4 className="modal-title text-center w-100" id="exampleModalLabel">Address of Sponser</h4>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <input type="text" onChange={handlechange} placeholder='address of sponser' className='w-100' />
                             {Object.keys(sponseraddresError).map((key) => { return <p className="inputErrors">{sponseraddresError[key]}</p> })}
                         </div>
-                        <div class="modal-footer justify-content-center">
-                            {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> */}
-                            <button type="button" onClick={Evangolism} class=" btn-common">Submit</button>
+                        <div className="modal-footer justify-content-center">
+                            {/* <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button> */}
+                            <button type="button" onClick={Evangolism} className=" btn-common">Submit</button>
                         </div>
                     </div>
                 </div>

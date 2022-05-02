@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './navbar.scss';
 import { useWeb3React } from '@web3-react/core'
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../hooks/useAuth';
-import FreeRoulette from '../../FreeRoulette/FreeRoulette'
-import Evanglism from '../../evangelism/Evanglism';
+
 // import $ from "jquery";
 // import WalletConnectProvider from "@walletconnect/web3-provider";
 // import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
@@ -16,14 +15,9 @@ import Evanglism from '../../evangelism/Evanglism';
 const Navbar = ({setNavActive, navActive}) => {
 
     const { account } = useWeb3React();
-    console.log("account we have", account)
-    // console.log("account",account)
     const { login, logout } = useAuth();
     const [show, setShow] = useState(false)
     const [blueshow, setBlueShow] = useState(false)
-    // const connectwallet = () => {
-    //     window.$("#exampleModalLong").modal('show');
-    // }
     const connectMetaMask = () => {
         localStorage.setItem("connectorId", "injected")
         if (account) {
@@ -59,9 +53,9 @@ const Navbar = ({setNavActive, navActive}) => {
                                     {/* <HashLink to='/'><img src="/hash-max-assets/header/logo.svg" className="img-fluid d-sm-none d-block logo_img" alt="" /></HashLink> */}
                                 </a>
                                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <div class="style-bar"></div>
-                                    <div class="style-bar"></div>
-                                    <div class="style-bar"></div>
+                                    <div className="style-bar"></div>
+                                    <div className="style-bar"></div>
+                                    <div className="style-bar"></div>
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav mx-auto">
@@ -82,7 +76,7 @@ const Navbar = ({setNavActive, navActive}) => {
                         </div>
                     </div>
                 </div>
-                <button onClick={toggleShow} className='burger-button'>{show ? <img src="/hash-max-assets/sidebar/hamburger-icon.svg" alt="" className='pb-1' /> : <i class="fa-solid common fa-bars"></i>}<i class="fa-solid fa-bars-filter"></i></button>
+                <button onClick={toggleShow} className='burger-button'>{show ? <img src="/hash-max-assets/sidebar/hamburger-icon.svg" alt="" className='pb-1' /> : <i className="fa-solid common fa-bars"></i>}<i className="fa-solid fa-bars-filter"></i></button>
             </section>
 
 
@@ -91,8 +85,8 @@ const Navbar = ({setNavActive, navActive}) => {
                     <div className="row">
                         {/* <ddiv className={show ? "col-md-2 col-0 p-0 hidoo" : "col-md-0 col-0 p-0 hidoo"}> */}
                         <div className={show ? "sidebar-components sidebar-components2 d-block" : "sidebar-components sidebar-components2"}>
-                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                {/* <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"> */}
+                            <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                {/* <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"> */}
                                 <Link to="/">
                                     <div className='sidebar-compo-innerContent pt-4'>
                                         <ul className="list-inline d-flex align-items-center">
@@ -107,7 +101,7 @@ const Navbar = ({setNavActive, navActive}) => {
                                     </div>
                                 </Link>
                                 {/* </a> */}
-                                <a class="nav-link" href='#'>
+                                <a className="nav-link" href='#'>
                                     <div className='sidebar-compo-innerContent'>
                                         <ul onClick={() => { setBlueShow(!blueshow); setShow(true) }} className="list-inline d-flex align-items-center">
                                             <li className="list-inline-item">
@@ -143,7 +137,7 @@ const Navbar = ({setNavActive, navActive}) => {
                                         </div>
                                     </>}
                                 </a>
-                                <a class="nav-link" href='https://farms.BabylonSwap.finance/farms'>
+                                <a className="nav-link" href='https://farms.BabylonSwap.finance/farms'>
                                     <div className='sidebar-compo-innerContent'>
                                         <ul className="list-inline d-flex align-items-center">
                                             <li className="list-inline-item">
@@ -157,7 +151,7 @@ const Navbar = ({setNavActive, navActive}) => {
                                     </div>
                                 </a>
 
-                                <a class="nav-link" href='https://farms.BabylonSwap.finance/miningBank'>
+                                <a className="nav-link" href='https://farms.BabylonSwap.finance/miningBank'>
                                     <div className='sidebar-compo-innerContent'>
                                         <ul className="list-inline d-flex align-items-center">
                                             <li className="list-inline-item">
@@ -170,7 +164,7 @@ const Navbar = ({setNavActive, navActive}) => {
                                         </ul>
                                     </div>
                                 </a>
-                                {/* <a class="nav-link" id="v-pills-free-tab" data-toggle="pill" href="#v-pills-free" role="tab" aria-controls="v-pills-settings" aria-selected="false"> */}
+                                {/* <a className="nav-link" id="v-pills-free-tab" data-toggle="pill" href="#v-pills-free" role="tab" aria-controls="v-pills-settings" aria-selected="false"> */}
                                 <Link to="/freeroutlet">
                                     <div className='sidebar-compo-innerContent'>
                                         <ul className="list-inline d-flex align-items-center">
@@ -186,7 +180,7 @@ const Navbar = ({setNavActive, navActive}) => {
                                 </Link>
                                 {/* </a> */}
 
-                                {/* <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"> */}
+                                {/* <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"> */}
                                 <Link to="/evanglism">
                                     <div className='sidebar-compo-innerContent'>
                                         <ul className="list-inline d-flex align-items-center">
@@ -243,12 +237,12 @@ const Navbar = ({setNavActive, navActive}) => {
                             }
                         </div>
                         {/* <div className="col-md-12 mx-auto col-12">
-                            <div class="tab-content" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{<FreeRoulette />}</div>
-                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-                                <div class="tab-pane fade" id="v-pills-free" role="tabpanel" aria-labelledby="v-pills-free-tab">{<FreeRoulette />}</div>
-                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-free-tab">{<Evanglism />}</div>
+                            <div className="tab-content" id="v-pills-tabContent">
+                                <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">{<FreeRoulette />}</div>
+                                <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                                <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                                <div className="tab-pane fade" id="v-pills-free" role="tabpanel" aria-labelledby="v-pills-free-tab">{<FreeRoulette />}</div>
+                                <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-free-tab">{<Evanglism />}</div>
                             </div>
                         </div> */}
                     </div>

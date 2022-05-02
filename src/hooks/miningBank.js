@@ -58,7 +58,7 @@ const ClaimingAll = (tokenAddress) => {
     }
   }, [contract,account]);
 
-  return { claimAll };
+  return { allClaim: claimAll };
 };
 export default Claiming;
 
